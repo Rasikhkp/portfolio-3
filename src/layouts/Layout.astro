@@ -1,0 +1,33 @@
+---
+import '../styles/global.css';
+const { title = "RASIKH KHALIL PASHA | FULLSTACK DEVELOPER" } = Astro.props;
+---
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <style is:global>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&display=swap');
+      body { font-family: 'Space Grotesk', sans-serif; }
+      ::selection { background-color: #dc2626; color: white; }
+      /* Hide scrollbar for the carousel but keep functionality */
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+  </head>
+  <body class="bg-white text-black antialiased border-4 border-black m-2 md:m-4 flex flex-col min-h-[calc(100vh-2rem)]">
+    
+    <nav class="border-b-4 border-black p-4 md:p-6 flex justify-between items-center uppercase font-black tracking-tighter text-xl">
+      <a href="/" class="hover:text-red-600 transition-none">Rasikh Khalil Pasha</a>
+    </nav>
+
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <footer class="p-4 md:p-6 flex justify-between uppercase font-black tracking-tighter bg-white">
+      <span>© {new Date().getFullYear()} ・ Rasikh Khalil Pasha</span>
+    </footer>
+  </body>
+</html>

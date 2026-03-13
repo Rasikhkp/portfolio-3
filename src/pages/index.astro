@@ -1,17 +1,180 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import ProjectCarousel from '../components/ProjectCarousel.astro';
+import { Icon } from 'astro-icon/components';
 ---
+<Layout>
+  <header class="border-b-4 border-black p-6 md:p-16 flex flex-col justify-center min-h-[50vh]">
+    <h1 class="text-7xl md:text-[10rem] font-black uppercase tracking-tighter leading-none mb-4 md:mb-6">
+      Rasikh Khalil Pasha
+    </h1>
+    <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight mb-2 text-red-600">
+      Fullstack Web Developer
+    </h2>
+    <p class="text-xl md:text-2xl font-bold uppercase tracking-tight max-w-3xl mb-8">
+      Building scalable web systems.
+    </p>
+    <div class="inline-flex items-center gap-3 border-2 border-black bg-white px-4 py-2 font-bold uppercase text-sm md:text-base shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] w-max">
+      <span class="relative flex h-3 w-3">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500 border border-black"></span>
+      </span>
+    Open to freelance work
+    </div>
+  </header>  
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+  <section class="grid grid-cols-1 md:grid-cols-3 border-b-4 border-black">
+    <div class="p-6 md:p-12 bg-red-600 border-b-4 md:border-b-0 md:border-r-4 border-black text-white">
+      <h3 class="text-5xl font-black uppercase tracking-tighter">About Me</h3>
+    </div>
+    <div class="p-6 md:p-12 md:col-span-2 flex items-center bg-white">
+      <p class="text-xl md:text-2xl font-bold tracking-tight leading-relaxed">
+        I craft thoughtful web systems that are clean, scalable, and built to last. I love experimenting with new tech, but I take reliability seriously. I explore boldly, ship carefully, and optimize obsessively. Curious builder, practical thinker, dependable partner for turning ideas into scalable products.
+      </p>
+    </div>
+  </section>
+
+  <ProjectCarousel />
+
+  <section class="border-b-4 border-black">
+    <div class="p-6 md:p-12 border-b-4 border-black bg-black text-white">
+      <h3 class="text-5xl font-black uppercase tracking-tighter">Capabilities</h3>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 divide-y-4 md:divide-y-0 md:divide-x-4 divide-black">
+      
+      <div class="p-6 md:p-12 bg-gray-50 flex flex-col gap-6 hover:bg-white transition-colors">
+        <h4 class="text-3xl font-black uppercase tracking-tight border-b-4 border-black pb-2 inline-block w-max">Frontend</h4>
+        <div class="flex flex-wrap gap-3">
+          <div class="flex items-center gap-2 border-2 border-black bg-white px-3 py-2 font-bold uppercase text-sm shadow-[4px_4px_0px_0px_rgba(220,38,38,1)]">
+            <Icon name="simple-icons:react" class="w-5 h-5" /> <span>React</span>
+          </div>
+          <div class="flex items-center gap-2 border-2 border-black bg-white px-3 py-2 font-bold uppercase text-sm shadow-[4px_4px_0px_0px_rgba(220,38,38,1)]">
+            <Icon name="simple-icons:nextdotjs" class="w-5 h-5" /> <span>Next.js</span>
+          </div>
+          <div class="flex items-center gap-2 border-2 border-black bg-white px-3 py-2 font-bold uppercase text-sm shadow-[4px_4px_0px_0px_rgba(220,38,38,1)]">
+            <Icon name="simple-icons:tailwindcss" class="w-5 h-5" /> <span>Tailwind</span>
+          </div>
+          <div class="flex items-center gap-2 border-2 border-black bg-white px-3 py-2 font-bold uppercase text-sm shadow-[4px_4px_0px_0px_rgba(220,38,38,1)]">
+            <Icon name="simple-icons:astro" class="w-5 h-5" /> <span>Astro</span>
+          </div>
+          <div class="flex items-center gap-2 border-2 border-black bg-white px-3 py-2 font-bold uppercase text-sm shadow-[4px_4px_0px_0px_rgba(220,38,38,1)]">
+            <Icon name="simple-icons:typescript" class="w-5 h-5" /> <span>TypeScript</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-6 md:p-12 bg-gray-50 flex flex-col gap-6 hover:bg-white transition-colors">
+        <h4 class="text-3xl font-black uppercase tracking-tight border-b-4 border-black pb-2 inline-block w-max">Backend</h4>
+        <div class="flex flex-wrap gap-3">
+          <div class="flex items-center gap-2 border-2 border-black bg-white px-3 py-2 font-bold uppercase text-sm shadow-[4px_4px_0px_0px_rgba(220,38,38,1)]">
+            <Icon name="simple-icons:bun" class="w-5 h-5" /> <span>Bun</span>
+          </div>
+          <div class="flex items-center gap-2 border-2 border-black bg-white px-3 py-2 font-bold uppercase text-sm shadow-[4px_4px_0px_0px_rgba(220,38,38,1)]">
+            <Icon name="simple-icons:nodedotjs" class="w-5 h-5" /> <span>Node.js</span>
+          </div>
+          <div class="flex items-center gap-2 border-2 border-black bg-white px-3 py-2 font-bold uppercase text-sm shadow-[4px_4px_0px_0px_rgba(220,38,38,1)]">
+            <Icon name="simple-icons:laravel" class="w-5 h-5" /> <span>Laravel</span>
+          </div>
+          <div class="flex items-center gap-2 border-2 border-black bg-white px-3 py-2 font-bold uppercase text-sm shadow-[4px_4px_0px_0px_rgba(220,38,38,1)]">
+            <Icon name="simple-icons:php" class="w-5 h-5" /> <span>PHP</span>
+          </div>
+          <div class="flex items-center gap-2 border-2 border-black bg-white px-3 py-2 font-bold uppercase text-sm shadow-[4px_4px_0px_0px_rgba(220,38,38,1)]">
+            <Icon name="simple-icons:hono" class="w-5 h-5" /> <span>Hono</span>
+          </div>
+          <div class="flex items-center gap-2 border-2 border-black bg-white px-3 py-2 font-bold uppercase text-sm shadow-[4px_4px_0px_0px_rgba(220,38,38,1)]">
+            <Icon name="simple-icons:express" class="w-5 h-5" /> <span>Express</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-6 md:p-12 bg-gray-50 flex flex-col gap-6 hover:bg-white transition-colors">
+        <h4 class="text-3xl font-black uppercase tracking-tight border-b-4 border-black pb-2 inline-block w-max">DevOps</h4>
+        <div class="flex flex-wrap gap-3">
+          <div class="flex items-center gap-2 border-2 border-black bg-white px-3 py-2 font-bold uppercase text-sm shadow-[4px_4px_0px_0px_rgba(220,38,38,1)]">
+            <Icon name="simple-icons:githubactions" class="w-5 h-5" /> <span>GitHub Actions</span>
+          </div>
+          <div class="flex items-center gap-2 border-2 border-black bg-white px-3 py-2 font-bold uppercase text-sm shadow-[4px_4px_0px_0px_rgba(220,38,38,1)]">
+            <Icon name="simple-icons:docker" class="w-5 h-5" /> <span>Docker</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="grid grid-cols-1 md:grid-cols-2 border-b-4 border-black bg-yellow-400">
+    <div class="p-6 md:p-12 border-b-4 md:border-b-0 md:border-r-4 border-black flex flex-col justify-center">
+      <h3 class="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-4">
+        Let's <br/> Work <br/> <span class="text-white" style="-webkit-text-stroke: 4px black;">Together</span>
+      </h3>
+      <p class="text-xl md:text-2xl font-bold uppercase tracking-tight mt-4">
+        Currently open for new opportunities.
+      </p>
+    </div>
+
+    <div class="p-6 md:p-12 flex flex-col justify-center gap-6 md:gap-8">
+      
+      <button data-copy="hello@johndoe.com" class="copy-btn group relative block w-full max-w-xl border-4 border-black bg-white px-6 py-4 text-left text-xl md:text-3xl font-black tracking-tight shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:bg-gray-100 active:translate-x-2 active:translate-y-2 active:shadow-none cursor-pointer">
+        <div class="flex items-center justify-between mb-1">
+          <span class="feedback-text block text-sm text-red-600 transition-colors">Email</span>
+          <Icon name="lucide:clipboard" class="w-5 h-5" />
+        </div>
+        rasikhonly@gmail.com
+      </button>
+
+      <button data-copy="+1234567890" class="copy-btn group relative block w-full max-w-xl border-4 border-black bg-white px-6 py-4 text-left text-xl md:text-3xl font-black tracking-tight shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:bg-gray-100 active:translate-x-2 active:translate-y-2 active:shadow-none cursor-pointer">
+        <div class="flex items-center justify-between mb-1">
+          <span class="feedback-text block text-sm text-red-600 transition-colors">Phone</span>
+          <Icon name="lucide:clipboard" class="w-5 h-5" />
+        </div>
+        088279365062
+      </button>
+
+      <div class="grid grid-cols-2 gap-4 w-full max-w-xl">
+        <a href="https://github.com/yourusername" target="_blank" class="block border-4 border-black bg-black text-white px-4 py-3 text-lg md:text-xl font-black uppercase tracking-tight text-center shadow-[6px_6px_0px_0px_rgba(220,38,38,1)] hover:bg-gray-900 active:translate-x-1.5 active:translate-y-1.5 active:shadow-none transition-all">
+          GitHub
+        </a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank" class="block border-4 border-black bg-[#0A66C2] text-white px-4 py-3 text-lg md:text-xl font-black uppercase tracking-tight text-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:bg-blue-800 active:translate-x-1.5 active:translate-y-1.5 active:shadow-none transition-all">
+          LinkedIn
+        </a>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Client-side script to handle copying to clipboard
+  const copyButtons = document.querySelectorAll('.copy-btn');
+
+  copyButtons.forEach(button => {
+    button.addEventListener('click', async () => {
+      const textToCopy = button.getAttribute('data-copy');
+      const feedbackElement = button.querySelector('.feedback-text');
+      const originalText = feedbackElement.textContent;
+
+      if (textToCopy) {
+        try {
+          await navigator.clipboard.writeText(textToCopy);
+          
+          // Visual feedback
+          feedbackElement.textContent = 'COPIED!';
+          feedbackElement.classList.remove('text-red-600');
+          feedbackElement.classList.add('text-green-600');
+          
+          // Reset after 2 seconds
+          setTimeout(() => {
+            feedbackElement.textContent = originalText;
+            feedbackElement.classList.remove('text-green-600');
+            feedbackElement.classList.add('text-red-600');
+          }, 2000);
+          
+        } catch (err) {
+          console.error('Failed to copy text: ', err);
+          feedbackElement.textContent = 'FAILED TO COPY';
+        }
+      }
+    });
+  });
+</script>

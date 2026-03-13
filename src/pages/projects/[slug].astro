@@ -1,0 +1,208 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { projects } from '../../data/projects.ts'; 
+import { Icon } from 'astro-icon/components';
+
+export function getStaticPaths() {
+  return projects.map(project => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+---
+<Layout title={`${project.title.toUpperCase()} | JOHN DOE`}>
+  
+  <div class="border-b-4 border-black flex">
+    <a href="/" class="p-4 md:p-6 border-r-4 border-black font-black uppercase hover:bg-black hover:text-white transition-none shrink-0 flex items-center">
+      &larr; Back
+    </a>
+    <h1 class="p-4 md:p-6 text-4xl md:text-7xl font-black uppercase tracking-tighter w-full bg-black text-white leading-none">
+      {project.title}
+    </h1>
+  </div>
+
+  <div class="border-b-4 border-black bg-gray-200 p-6 flex justify-start md:justify-end">
+    <button 
+      id="open-gallery"
+      class="cursor-pointer border-4 border-black bg-white px-6 py-3 font-black uppercase text-sm md:text-base shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-200 active:translate-x-1 active:translate-y-1 active:shadow-none transition-all flex items-center gap-2"
+    >
+      <Icon name="lucide:maximize-2" class="w-5 h-5" />
+      View Project Gallery
+    </button>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-4 border-b-4 border-black">
+    <div class="p-6 border-b-4 md:border-b-0 md:border-r-4 border-black">
+      <span class="block text-sm font-bold text-red-600 uppercase mb-2">Year</span>
+      <span class="text-2xl font-black">{project.year}</span>
+    </div>
+    <div class="p-6 border-b-4 md:border-b-0 md:border-r-4 border-black">
+      <span class="block text-sm font-bold text-red-600 uppercase mb-2">Role</span>
+      <span class="text-2xl font-black uppercase">{project.role}</span>
+    </div>
+    <div class="p-6 border-b-4 md:border-b-0 md:border-r-4 border-black md:col-span-2">
+      <span class="block text-sm font-bold text-red-600 uppercase mb-2">Stack</span>
+      <span class="text-2xl font-black uppercase">{project.techStack}</span>
+    </div>
+  </div>
+
+  <div class="p-6 md:p-12 max-w-5xl">
+    <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight mb-8">
+      {project.shortDesc}
+    </h2>
+    
+    <div class="text-lg md:text-xl font-medium tracking-tight mb-12 flex flex-col gap-8 leading-relaxed">
+      {project.longDesc.map(paragraph => (
+        <div set:html={paragraph} />
+      ))}
+    </div>
+
+    {project.link && (
+      <a 
+        href={project.link} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="inline-block border-4 border-black bg-white text-black px-8 py-4 text-xl font-black uppercase tracking-widest hover:bg-black hover:text-white transition-none shadow-[6px_6px_0px_0px_rgba(220,38,38,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
+      >
+        View Source / Live Site &rarr;
+      </a>
+    )}
+  </div>
+
+  <dialog id="gallery-dialog" class="fixed inset-0 m-auto p-0 border-4 border-black shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] w-[95vw] h-[95vh] max-w-[1400px] bg-white backdrop:bg-black/80 backdrop:backdrop-blur-sm focus:outline-none overflow-hidden">
+    <div class="flex flex-col h-full">
+      <div class="border-b-4 border-black p-4 flex justify-between items-center bg-white shrink-0 z-10">
+        <h3 class="text-2xl font-black uppercase tracking-tight">{project.title} Gallery</h3>
+        <button id="close-gallery" class="border-4 border-black p-1 hover:bg-black hover:text-white transition-none cursor-pointer">
+          <Icon name="lucide:x" class="w-8 h-8" />
+        </button>
+      </div>
+
+      <div class="relative flex-grow bg-gray-100 overflow-hidden">
+        <div id="carousel-track" class="flex h-full transition-transform duration-300 ease-in-out">
+          {project.images.map((img, index) => (
+            <div class="w-full h-full flex-shrink-0 flex items-center justify-center p-4 md:p-12">
+              <img 
+                src={img} 
+                alt={`${project.title} screenshot ${index + 1}`} 
+                class="max-w-full max-h-full object-contain border-4 border-black shadow-[8px_8px_0px_0px_rgba(220,38,38,1)] bg-white"
+              />
+            </div>
+          ))}
+        </div>
+
+        <div class="hidden md:block absolute left-6 top-1/2 -translate-y-1/2 z-10">
+          <button class="prev-btn border-4 border-black bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-200 cursor-pointer active:translate-x-1 active:translate-y-1 active:shadow-none transition-all disabled:opacity-30">
+            <Icon name="lucide:chevron-left" class="w-10 h-10" />
+          </button>
+        </div>
+        
+        <div class="hidden md:block absolute right-6 top-1/2 -translate-y-1/2 z-10">
+          <button class="next-btn border-4 border-black bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-200 cursor-pointer active:translate-x-1 active:translate-y-1 active:shadow-none transition-all disabled:opacity-30">
+            <Icon name="lucide:chevron-right" class="w-10 h-10" />
+          </button>
+        </div>
+      </div>
+
+      <div class="border-t-4 border-black p-4 flex items-center justify-between md:justify-center gap-6 bg-white shrink-0">
+        <button class="prev-btn md:hidden border-4 border-black bg-white p-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none disabled:opacity-30">
+          <Icon name="lucide:chevron-left" class="w-6 h-6" />
+        </button>
+
+        <div class="flex items-center justify-center border-4 border-black px-6 py-2 bg-gray-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <span class="text-xl font-black tracking-widest italic">
+            <span id="current-image-count">1</span> / {project.images.length}
+          </span>
+        </div>
+
+        <button class="next-btn md:hidden border-4 border-black bg-white p-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none disabled:opacity-30">
+          <Icon name="lucide:chevron-right" class="w-6 h-6" />
+        </button>
+      </div>
+    </div>
+  </dialog>
+</Layout>
+
+<script>
+  const dialog = document.getElementById('gallery-dialog') as HTMLDialogElement;
+  const openBtn = document.getElementById('open-gallery');
+  const closeBtn = document.getElementById('close-gallery');
+  const prevBtns = document.querySelectorAll('.prev-btn');
+  const nextBtns = document.querySelectorAll('.next-btn');
+  const track = document.getElementById('carousel-track');
+  
+  // Grab the new counter element
+  const counterElement = document.getElementById('current-image-count');
+  
+  let currentIndex = 0;
+  // Calculate total dynamically based on the elements rendered in the track
+  const totalImages = track ? track.children.length : 0;
+
+  function updateCarousel() {
+    if (track) {
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+    
+    // Update the counter text
+    if (counterElement) {
+      counterElement.textContent = (currentIndex + 1).toString();
+    }
+
+    // Update all navigation buttons disabled state
+    prevBtns.forEach(btn => (btn as HTMLButtonElement).disabled = currentIndex === 0);
+    nextBtns.forEach(btn => (btn as HTMLButtonElement).disabled = currentIndex === totalImages - 1);
+  }
+
+  // Open/Close logic
+  openBtn?.addEventListener('click', () => {
+    dialog?.showModal();
+    updateCarousel();
+    document.body.style.overflow = 'hidden';
+  });
+
+  closeBtn?.addEventListener('click', () => dialog?.close());
+  dialog?.addEventListener('close', () => document.body.style.overflow = '');
+
+  // Close on backdrop click
+  dialog?.addEventListener('click', (e) => {
+    if (e.target === dialog) dialog.close();
+  });
+
+  // Navigation Logic
+  prevBtns.forEach(btn => btn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateCarousel();
+    }
+  }));
+
+  nextBtns.forEach(btn => btn.addEventListener('click', () => {
+    if (currentIndex < totalImages - 1) {
+      currentIndex++;
+      updateCarousel();
+    }
+  }));
+
+  // Keyboard navigation
+  window.addEventListener('keydown', (e) => {
+    if (!dialog?.open) return;
+    if (e.key === 'ArrowLeft') {
+      (document.querySelector('.prev-btn:not([disabled])') as HTMLButtonElement)?.click();
+    } else if (e.key === 'ArrowRight') {
+      (document.querySelector('.next-btn:not([disabled])') as HTMLButtonElement)?.click();
+    }
+  });
+</script>
+
+<style>
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+  }
+
+  dialog:not([open]) {
+    display: none;
+  }
+</style>
