@@ -15,6 +15,7 @@ export const projects = [
       "<ul class=\"list-disc pl-6 space-y-2 text-lg md:text-xl\"><li><strong>Frontend:</strong> React 18, Vite, Jotai (State), TanStack Query (Server State), TanStack Router.</li><li><strong>UI/UX:</strong> Tailwind CSS, Shadcn UI (Radix UI), Framer Motion.</li><li><strong>Validation & Utilities:</strong> Zod, React Hook Form, xlsx, jspdf, html2canvas, recharts.</li><li><strong>Backend & Real-time:</strong> Laravel Echo, Pusher (WebSockets), MySQL.</li></ul>"
     ],
     images: [
+      '/images/pestindo 0.jpg',
       '/images/pestindo 1.png',
       '/images/pestindo 2.png',
       '/images/pestindo 3.png',
